@@ -8,7 +8,7 @@ import "./main.css";
 import { MantineProvider, Paper } from "@mantine/core";
 import { Header } from "./components/Layout/Header/Header";
 import { Footer } from "./components/Layout/Footer/Footer";
-import { CarouselItems } from "./components/Carousel/CarouselItems";
+import { CarouselProduces } from "./components/Carousel/CarouselProduces";
 
 const queryClient = new QueryClient();
 
@@ -19,9 +19,8 @@ function App() {
         <Header />
         <>
           <Paper radius="xl" py="xl">
-            <CarouselItems />
+            <CarouselProduces />
           </Paper>
-          {/* <GridItems /> */}
         </>
         <Footer />
       </MantineProvider>

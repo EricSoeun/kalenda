@@ -1,27 +1,26 @@
 import { Grid, Container, Text } from "@mantine/core";
-import { CardItem } from "../../Cards/CardItem";
+import { CardProduce } from "../../Cards/CardProduce";
 import { useQuery } from "@tanstack/react-query";
-import { getItems } from "../../../api";
-// import { IProduce } from "../../../types/Item";
+import { getProduces} from "../../../api";
 
-const child = <CardItem />;
+const child = <CardProduce />;
 // const child = <Skeleton height={140} radius="md" animate={false} />;
 
-export function GridItems() {
+export function GridProduces() {
   const { data } = useQuery({
-    queryKey: ["items"],
-    queryFn: getItems,
+    queryKey: ["produces"],
+    queryFn: getProduces,
   });
 
   return (
     <Container size={"xl"}>
       <Grid px={"xl"}>
-        {data?.map((item) => (
+        {data?.map((produce) => (
           <Grid.Col span={{ base: 12, xs: 3 }}>
             <>
               {child}
-              <Text>{item.title}</Text>
-              <Text>{item._id}</Text>
+              <Text>{produce.title}</Text>
+              <Text>{produce._id}</Text>
             </>
           </Grid.Col>
         ))}

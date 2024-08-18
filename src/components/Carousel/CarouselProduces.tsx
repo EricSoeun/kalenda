@@ -1,11 +1,11 @@
 import { Carousel, Embla } from "@mantine/carousel";
-import classes from "./CarouselItems.module.css";
+import classes from "./CarouselProduces.module.css";
 import { ActionIcon, Group, Space, Text } from "@mantine/core";
-import { GridItems } from "../Layout/Body/GridItems";
+import { GridProduces } from "../Layout/Body/GridProduces";
 import { useState } from "react";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 
-export function CarouselItems() {
+export function CarouselProduces() {
   const [embla, setEmbla] = useState<Embla | null>(null);
 
   const handleNext = () => embla?.scrollNext();
@@ -40,16 +40,16 @@ export function CarouselItems() {
           // bg={"blue"}
         >
           <Carousel.Slide>
-            <GridItems />
+            <GridProduces />
           </Carousel.Slide>
           <Carousel.Slide>
-            <GridItems />
+            <GridProduces />
           </Carousel.Slide>
           <Carousel.Slide>
-            <GridItems />
+            <GridProduces />
           </Carousel.Slide>
           <Carousel.Slide>
-            <GridItems />
+            <GridProduces />
           </Carousel.Slide>
         </Carousel>
       </div>

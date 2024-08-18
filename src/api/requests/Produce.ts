@@ -1,7 +1,7 @@
 import { ProducesSchema } from "../../schemas/produce";
 import { axiosInstance } from "../instance";
 
-export const getItems = async () => {
+export const getProduces = async () => {
   try {
     const { data } = await axiosInstance.get("/produces");
     // console.log("response: ", response);
