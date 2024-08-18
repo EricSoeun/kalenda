@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const axiosInstance = axios.create({
-  baseURL: "https://cal-v2.vercel.app/api/v1",
+  baseURL: import.meta.env.VITE_BASE_URL,
   timeout: 5000,
   headers: {
     "Content-Type": "application/json",

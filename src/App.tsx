@@ -9,6 +9,7 @@ import { MantineProvider, Paper } from "@mantine/core";
 import { Header } from "./components/Layout/Header/Header";
 import { Footer } from "./components/Layout/Footer/Footer";
 import { CarouselItems } from "./components/Carousel/CarouselItems";
+import { GridItems } from "./components/Layout/Body/GridItems";
 
 const queryClient = new QueryClient();
 
