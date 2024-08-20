@@ -71,8 +71,8 @@ export function Footer() {
             style={{ width: "48px" }}
           />
           <Text size="xs" c="white" className={classes.description}>
-            Kalenda est une application web permettant aux utilisateurs de connaître les
-            fruits et légumes de saison en temps réel.
+            Kalenda est une application permettant de connaître la saison des
+            fruits et légumes en temps réel.
           </Text>
         </div>
         <div className={classes.groups}>{groups}</div>

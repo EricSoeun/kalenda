@@ -18,7 +18,7 @@ function App() {
       <MantineProvider>
         <Header />
         <>
-          <Paper radius="xl" py="xl">
+          <Paper py="xl" style={{background: "none"}}>
             <CarouselProduces />
           </Paper>
         </>

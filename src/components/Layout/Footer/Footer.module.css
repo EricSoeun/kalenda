@@ -1,5 +1,5 @@
 .footer {
-  /* margin-top: rem(120px); */
+  margin-top: rem(120px);
   padding-top: calc(var(--mantine-spacing-xl) * 2);
   padding-bottom: calc(var(--mantine-spacing-xl) * 2);
   /* background-color: #f8854a; */
@@ -7,8 +7,7 @@
 * Created with https://www.css-gradient.com
 * Gradient link: https://www.css-gradient.com/?c1=e8722c&c2=ffba27&gt=r&gd=dtt
 */
-background: #E8722C;
-background: radial-gradient(at center top, #E8722C, #FFBA27);
+background: #030712;
 }
 
 .logo {

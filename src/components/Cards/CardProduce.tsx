@@ -1,25 +1,49 @@
-import {
-  Card,
-  Image,
-  Text,
-  Group,
-  Progress,
-  Modal,
-} from "@mantine/core";
+import { Card, Image, Text, Group, Progress, Modal } from "@mantine/core";
 import { useDisclosure, useMediaQuery } from "@mantine/hooks";
+import classes from "./CardProduce.module.css";
 
-export function CardProduce() {
+interface CardProduceProps {
+  produceTitle: string;
+  produceImage: string;
+  startAt: number;
+  endAt: number;
+  remainingDays: number;
+  spendingDays: number;
+  totalDays: number;
+}
+
+export function CardProduce(props: CardProduceProps) {
   const [opened, { open, close }] = useDisclosure(false);
   const isMobile = useMediaQuery("(max-width: 50em)");
+
+  const stats = [
+    { title: "spendingDays", value: props.spendingDays },
+    { title: "remainingDays", value: props.remainingDays },
+    { title: "TotalDays", value: props.totalDays },
+  ];
+
+  const items = stats.map((stat) => (
+    <div key={stat.title}>
+      <Text size="xs" color="dimmed">
+        {stat.title}
+      </Text>
+      <Text fw={500} size="sm">
+        {stat.value}
+      </Text>
+    </div>
+  ));
+
+  const percentageRemaining = 100-((props.spendingDays / props.totalDays) * 100);
 
   return (
     <>
       <Card shadow="sm" padding="lg" radius="xl" withBorder onClick={open}>
         <Card.Section component="a">
           <Image
-            // src="https://luchyprimeurs.com/183-large_default/pomme-red-chief.jpg"
-            src="https://www.association-alimentation.fr/wp-content/uploads/pomme.png"
-            // src="https://assets.gammvert.fr/image/fetch/w_auto,q_auto,f_auto,c_pad/https://images.ctfassets.net/b85ozb2q358o/34acdd126fba8f5a92db312da65c33324a98cb907326c4cf3800c8e270e1a25a/39a559b1089964d92303b3ce3e20fdd9/image.png"
+            src={
+              props.produceImage ||
+              "https://www.association-alimentation.fr/wp-content/uploads/pomme.png"
+            }
             fit="cover"
             height={200}
             alt="Norway"
@@ -27,17 +51,19 @@ export function CardProduce() {
         </Card.Section>
 
         <Group justify="space-between" mt="md" mb="xs">
-          <Text fw={500}>Pomme</Text>
+          <Text fw={500}>{props.produceTitle}</Text>
         </Group>
 
         <Progress
-          value={54.31}
+          value={percentageRemaining}
           color="lime"
           mt="md"
           size="lg"
           radius="xl"
           striped
         />
+
+        <Card.Section className={classes.footer}>{items}</Card.Section>
       </Card>
       <Modal
         opened={opened}

@@ -7,9 +7,39 @@ import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 
 export function CarouselProduces() {
   const [embla, setEmbla] = useState<Embla | null>(null);
+  const [monthDisplayed, setMonthDisplayed] = useState<number>(7);
 
-  const handleNext = () => embla?.scrollNext();
-  const handlePrev = () => embla?.scrollPrev();
+  const handleNext = () => {
+    setMonthDisplayed(monthDisplayed + 1);
+    console.log("embla?.selectedScrollSnap(): ", embla?.selectedScrollSnap());
+
+    embla?.scrollNext();
+  };
+  const handlePrev = () => {
+    setMonthDisplayed(monthDisplayed - 1);
+    embla?.scrollPrev();
+  };
+
+  const calendarMonths = [
+    "Janvier", // 0
+    "Février", // 1
+    "Mars", // 2
+    "Avril", // 3
+    "Mai", // 4
+    "Juin", // 5
+    "Juillet", // 6
+    "Août", // 7
+    "Septembre", // 8
+    "Octobre", // 9
+    "Novembre", // 10
+    "Décembre", // 11
+  ];
+
+  const calendarSlide = (
+    <Carousel.Slide>
+      <GridProduces />
+    </Carousel.Slide>
+  );
 
   return (
     <>
@@ -23,36 +53,21 @@ export function CarouselProduces() {
           // variant="gradient"
           // gradient={{ from: "orange", to: "yellow", deg: 90 }}
         >
-          Août
+          {calendarMonths[embla?.selectedScrollSnap() ?? monthDisplayed]}
         </Text>
         <ActionIcon onClick={handleNext}>
           <IconArrowRight />
         </ActionIcon>
       </Group>
       <Space h="xl" />
-      <div style={{ display: "flex" }}>
-        <Carousel
-          getEmblaApi={setEmbla}
-          classNames={classes}
-          height="100%"
-          style={{ flex: 1 }}
-          loop
-          // bg={"blue"}
-        >
-          <Carousel.Slide>
-            <GridProduces />
-          </Carousel.Slide>
-          <Carousel.Slide>
-            <GridProduces />
-          </Carousel.Slide>
-          <Carousel.Slide>
-            <GridProduces />
-          </Carousel.Slide>
-          <Carousel.Slide>
-            <GridProduces />
-          </Carousel.Slide>
-        </Carousel>
-      </div>
+      <Carousel
+        getEmblaApi={setEmbla}
+        classNames={classes}
+        height="100%"
+        loop
+      >
+        {calendarMonths.map(() => calendarSlide)}
+      </Carousel>
     </>
   );
 }
