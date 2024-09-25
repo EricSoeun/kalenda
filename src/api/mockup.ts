@@ -17,7 +17,7 @@ export const produceMocked = [
     latinTitle: "Solanum lycopersicum",
     produceType: "fruit",
     image:
-      "https://www.chronodrive.com/le-studio/wp-content/uploads/2022/07/tomates.png",
+      "https://i0.wp.com/www.millevarietesanciennes.org/wp-content/uploads/2023/01/Tomate-Buissonnante-2-1-scaled.jpg",
     description: "Fruit juteux et souvent utilisé comme légume.",
     startAt: 6, // 1er juin
     endAt: 9, // 30 septembre

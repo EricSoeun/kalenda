@@ -1,17 +1,35 @@
 .card {
-  background-color: var(--mantine-color-body);
+  background: var(--mantine-color-body);
+  border: 1px solid var(--mantine-color-dark-5);
+  box-shadow: -5px 5px var(--mantine-color-body),
+    -5px 5px 0 1px var(--mantine-color-dark-5);
+  transition: box-shadow 200ms ease, transform 200ms ease;
+}
+
+.card:hover {
+  transform: translate(4px, -4px);
+  box-shadow: -8px 8px 0 var(--mantine-color-dark-5);
 }
 
 .footer {
   display: flex;
   justify-content: space-between;
   padding: var(--mantine-spacing-sm) var(--mantine-spacing-lg);
-  border-top: rem(1px) solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
+  border-top: rem(1px) solid
+    light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
 }
 
 .title {
-  font-family:
-    Greycliff CF,
-    var(--mantine-font-family);
+  font-family: Greycliff CF, var(--mantine-font-family);
   line-height: 1;
+}
+
+.modal {
+  box-shadow: -8px 8px 0 var(--mantine-color-dark-5);
+  border: solid 1px var(--mantine-color-dark-5);
+}
+
+.modalTitle {
+  font-size: var(--mantine-h2-font-size);
+  font-weight: var(--mantine-heading-font-weight);
 }

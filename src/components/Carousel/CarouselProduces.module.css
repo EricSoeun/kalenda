@@ -17,3 +17,11 @@
     }
   }
 }
+
+.carouselProduces {
+  margin-top: 8rem;
+  background: red;
+  background: url("./../../assets/dot.png");
+  background-repeat: no-repeat;
+  background-size: 25%;
+}

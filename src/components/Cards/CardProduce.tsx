@@ -1,6 +1,7 @@
 import { Card, Image, Text, Group, Progress, Modal } from "@mantine/core";
 import { useDisclosure, useMediaQuery } from "@mantine/hooks";
 import classes from "./CardProduce.module.css";
+import { ModalProduceContent } from "../Modal/ModalProduceContent";
 
 interface CardProduceProps {
   produceTitle: string;
@@ -16,28 +17,19 @@ export function CardProduce(props: CardProduceProps) {
   const [opened, { open, close }] = useDisclosure(false);
   const isMobile = useMediaQuery("(max-width: 50em)");
 
-  const stats = [
-    { title: "spendingDays", value: props.spendingDays },
-    { title: "remainingDays", value: props.remainingDays },
-    { title: "TotalDays", value: props.totalDays },
-  ];
-
-  const items = stats.map((stat) => (
-    <div key={stat.title}>
-      <Text size="xs" color="dimmed">
-        {stat.title}
-      </Text>
-      <Text fw={500} size="sm">
-        {stat.value}
-      </Text>
-    </div>
-  ));
-
-  const percentageRemaining = 100-((props.spendingDays / props.totalDays) * 100);
+  const percentageRemaining =
+    100 - (props.spendingDays / props.totalDays) * 100;
 
   return (
     <>
-      <Card shadow="sm" padding="lg" radius="xl" withBorder onClick={open}>
+      <Card
+        className={classes.card}
+        // shadow="sm"
+        padding="lg"
+         radius="sm"
+        // withBorder
+        onClick={open}
+      >
         <Card.Section component="a">
           <Image
             src={
@@ -45,7 +37,7 @@ export function CardProduce(props: CardProduceProps) {
               "https://www.association-alimentation.fr/wp-content/uploads/pomme.png"
             }
             fit="cover"
-            height={200}
+            height={150}
             alt="Norway"
           />
         </Card.Section>
@@ -63,21 +55,29 @@ export function CardProduce(props: CardProduceProps) {
           striped
         />
 
-        <Card.Section className={classes.footer}>{items}</Card.Section>
+        {/* <Card.Section className={classes.footer}>{items}</Card.Section> */}
       </Card>
       <Modal
+        classNames={{
+          content: classes.modal,
+          title: classes.modalTitle
+        }}
+        size={"xl"}
         opened={opened}
         onClose={close}
-        title="This is a fullscreen modal"
+        title="Citron"
         fullScreen={isMobile}
-        radius={"lg"}
+        radius={"sm"}
         transitionProps={{ transition: "scale", duration: 100 }}
         overlayProps={{
           backgroundOpacity: 0.45,
           blur: 2,
         }}
       >
-        The Modal will be full screen only on mobile
+        <ModalProduceContent
+          title={props.produceTitle}
+          description={props.produceTitle}
+        />
       </Modal>
     </>
   );

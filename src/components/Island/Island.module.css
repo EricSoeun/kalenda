@@ -1,0 +1,31 @@
+.container {
+  /* background: #000; */
+  position: fixed;
+  bottom: 5rem;
+  display: flex;
+  justify-content: center;
+  padding: var(--mantine-spacing-lg) var(--mantine-spacing-lg);
+}
+
+.island {
+  background: white;
+  border-radius: 100vmax;
+  padding: var(--mantine-spacing-lg) var(--mantine-spacing-lg);
+  width: 30rem;
+  border: 1px solid var(--mantine-color-dark-5);
+  position: fixed;
+  transition: all 0.3s ease;
+  margin: 0 auto;
+  z-index: 2;
+    left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.shrink {
+  width: 20rem;
+  padding: var(--mantine-spacing-xs);
+}
+
+.content {
+  display: flex;
+}

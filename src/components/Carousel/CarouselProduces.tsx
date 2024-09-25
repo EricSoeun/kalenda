@@ -1,18 +1,16 @@
 import { Carousel, Embla } from "@mantine/carousel";
 import classes from "./CarouselProduces.module.css";
-import { ActionIcon, Group, Space, Text } from "@mantine/core";
+import { Group, Space, Text } from "@mantine/core";
 import { GridProduces } from "../Layout/Body/GridProduces";
 import { useState } from "react";
-import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 
 export function CarouselProduces() {
   const [embla, setEmbla] = useState<Embla | null>(null);
-  const [monthDisplayed, setMonthDisplayed] = useState<number>(7);
+  const [monthDisplayed, setMonthDisplayed] = useState<number>(8);
 
   const handleNext = () => {
     setMonthDisplayed(monthDisplayed + 1);
     console.log("embla?.selectedScrollSnap(): ", embla?.selectedScrollSnap());
-
     embla?.scrollNext();
   };
   const handlePrev = () => {
@@ -37,30 +35,23 @@ export function CarouselProduces() {
 
   const calendarSlide = (
     <Carousel.Slide>
-      <GridProduces />
+      <GridProduces monthDisplayed={monthDisplayed} />
     </Carousel.Slide>
   );
 
   return (
-    <>
-      <Group justify="center">
-        <ActionIcon onClick={handlePrev}>
-          <IconArrowLeft />
-        </ActionIcon>
-        <Text
-          size="xl"
-          fw={900}
-          // variant="gradient"
-          // gradient={{ from: "orange", to: "yellow", deg: 90 }}
-        >
+    <div className={classes.carouselProduces}>
+      {/* <Group justify="center">
+        <Text onClick={handlePrev}>◄</Text>
+        <Text size="xl" fw={900}>
           {calendarMonths[embla?.selectedScrollSnap() ?? monthDisplayed]}
         </Text>
-        <ActionIcon onClick={handleNext}>
-          <IconArrowRight />
-        </ActionIcon>
-      </Group>
+        <Text onClick={handleNext}>►</Text>
+      </Group> */}
       <Space h="xl" />
       <Carousel
+        withControls={false}
+        initialSlide={monthDisplayed}
         getEmblaApi={setEmbla}
         classNames={classes}
         height="100%"
@@ -68,6 +59,6 @@ export function CarouselProduces() {
       >
         {calendarMonths.map(() => calendarSlide)}
       </Carousel>
-    </>
+    </div>
   );
 }
